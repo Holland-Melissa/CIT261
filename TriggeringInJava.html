@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Changing Color</title>
+</head>
+ 
+<body>
+ 
+<style>
+    #container {
+        width: 75%;
+        height: 290px;
+        cursor: pointer;
+        box-shadow: 0px 0px 15px #CCC;
+        border-radius: 10px;
+        margin: 0 auto;
+        background-color: yellow;
+        transition: background-color .2s ease-out;
+    }
+  </style>
+ 
+<div id="container">
+  <script>
+    var container = document.querySelector("#container");
+    var zeros = "0000000";
+ 
+    container.addEventListener("click", changeColor, false);
+ 
+    function changeColor(e) {
+        var color = "#" + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+        var colorLength = color.length;
+ 
+        if (colorLength < 7) {
+          color += zeros.substring(0, zeros.length - colorLength);
+        }
+        
+        /*
+        In this line, we are setting our container element's background color to the new, 
+        randomly generated value. By changing our background color here, our transition 
+        (defined earlier in CSS and applied on the same container element) kicks in and 
+        animates the background color property to the new value.
+        */
+        container.style.backgroundColor = color;
+    }
+  </script>
+</div>
+</body>
+ 
+</html>
